@@ -3,10 +3,7 @@ import socket
 import sys
 
 #Add port
-#ser = serial.Serial('', 9600)
-
-#Test write
-#ser.write(b'5')
+ser = serial.Serial('', 9600)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('kerlin.tech', 5001)
@@ -17,8 +14,9 @@ try:
   while True:
     data = sock.recv(1024)
     print(data)
-    #ser.write(data)
+    ser.write(byte(data, 'utf-8'))
 
 finally:
   print('Closing client')
   sock.close()
+
